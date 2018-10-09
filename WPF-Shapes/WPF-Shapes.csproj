@@ -67,6 +67,7 @@
     <Compile Include="BLL\DrawSettings.cs" />
     <Compile Include="Commands\DrawPentagonCommand.cs" />
     <Compile Include="DAL\DataContext.cs" />
+    <Compile Include="DAL\SerializationManager.cs" />
     <Compile Include="DAL\ShapesManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
