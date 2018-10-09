@@ -16,5 +16,10 @@ namespace WPF_Shapes.DAL
         {
             Shapes.Add(name, shape);
         }
+
+        public void Clear()
+        {
+            Shapes.Clear();
+        }
     }
 }

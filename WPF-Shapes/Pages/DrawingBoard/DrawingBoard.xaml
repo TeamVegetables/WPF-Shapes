@@ -10,30 +10,73 @@
     <Grid Style="{StaticResource ContentRoot}" Name="Board">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="92*"/>
-            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+            <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="0" Grid.Row="0">
-            <ListBox Name="ShapesListBox" ItemsSource="{Binding Manager.Shapes.Keys}"/>
+        <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center">
+            <TextBlock Text="Shapes" Style="{StaticResource Heading2}" />
         </StackPanel>
-        <ScrollViewer Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1">
+        <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center">
+            <TextBlock Text="Board" Style="{StaticResource Heading2}" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center">
+            <TextBlock Text="Settings" Style="{StaticResource Heading2}" />
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <ListBox Name="ShapesListBox" ItemsSource="{Binding Manager.Shapes.Keys}" VerticalAlignment="Stretch"/>
+            <Button Content="Clear" Name="ClearButton" VerticalAlignment="Bottom" Click="ClearButton_OnClick"/>
+        </StackPanel>
+        <ScrollViewer Grid.Column="1" Grid.Row="1">
             <Canvas Name="Canvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
                 <Canvas.InputBindings>
                     <MouseBinding MouseAction="LeftClick" Command="{Binding DrawPentagonCommand}" CommandParameter="{Binding ElementName=Board}"/>
                 </Canvas.InputBindings>
             </Canvas>
         </ScrollViewer>
-        <StackPanel Grid.Column="2">
+        <StackPanel Grid.Column="2" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
-                <Label Content="Mode: "/>
-                <ComboBox MinWidth="50">
+                <TextBlock Text="Mode: "/>
+                <ComboBox MinWidth="70" MinHeight="20">
                     <TextBlock>Draw</TextBlock>
                     <TextBlock>Move</TextBlock>
                 </ComboBox>
             </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.Column="0" Grid.Row="0">
+                    <TextBlock Text="Fill color: "/>
+                    <Rectangle Name ="FillColorRect" Height="20" Width="20" Fill="{Binding Settings.FillColorBrush}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.Column="0" Grid.Row="1">
+                    <TextBlock Text="Stroke color: "/>
+                    <Rectangle Name ="StrokeColorRect" Height="20" Width="20" Fill="{Binding Settings.StrokeColorBrush}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.Column="0" Grid.Row="2">
+                    <TextBlock Text="Stroke thickness: "/>
+                    <TextBlock Text="{Binding Settings.StrokeThickness}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.Column="1" Grid.Row="0">
+                    <Button Content="Change" Name="ChangeFillColorButton" Click="ChangeFillColorButton_OnClick"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.Column="1" Grid.Row="1">
+                    <Button Content="Change" Name="ChangeStrokeColorButton" Click="ChangeStrokeColorButton_OnClick"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.Column="1" Grid.Row="2">
+                    <Slider Value="{Binding Settings.StrokeThickness}" MinWidth="74"/>
+                </StackPanel>
+            </Grid>
         </StackPanel>
     </Grid>
 </UserControl>

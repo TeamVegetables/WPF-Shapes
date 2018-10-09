@@ -47,6 +47,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFColorPickerLib">
+      <HintPath>..\..\..\..\..\WPFColorPicker\WPFColorPickerLib\bin\Debug\WPFColorPickerLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -61,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="BLL\DrawSettings.cs" />
     <Compile Include="Commands\DrawPentagonCommand.cs" />
     <Compile Include="DAL\DataContext.cs" />
     <Compile Include="DAL\ShapesManager.cs" />

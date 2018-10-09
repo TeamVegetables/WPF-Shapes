@@ -1,6 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
-using System.Windows.Shapes;
+﻿using System.Windows.Input;
+using WPF_Shapes.BLL;
 using WPF_Shapes.Commands;
 
 namespace WPF_Shapes.DAL
@@ -9,11 +8,14 @@ namespace WPF_Shapes.DAL
     {
         public ShapesManager Manager { get; }
 
+        public DrawSettings Settings { get; }
+
         public ICommand DrawPentagonCommand { get; }
 
         public DataContext()
         {
             Manager = new ShapesManager();
+            Settings = new DrawSettings();
             DrawPentagonCommand = new DrawPentagonCommand(this);
         }
     }

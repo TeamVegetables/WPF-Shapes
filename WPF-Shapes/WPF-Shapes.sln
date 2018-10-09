@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-Shapes", "WPF-Shapes.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-Shapes.Tests", "..\WPF-Shapes.Tests\WPF-Shapes.Tests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-Shapes.ColorPicker", "..\..\..\..\..\WPFColorPicker\WPFColorPickerLib\WPF-Shapes.ColorPicker.csproj", "{587ACFBA-1A74-4A38-98C4-69442ECCB7DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{587ACFBA-1A74-4A38-98C4-69442ECCB7DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587ACFBA-1A74-4A38-98C4-69442ECCB7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587ACFBA-1A74-4A38-98C4-69442ECCB7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587ACFBA-1A74-4A38-98C4-69442ECCB7DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

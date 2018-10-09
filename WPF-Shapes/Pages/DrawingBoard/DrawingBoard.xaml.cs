@@ -1,4 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using WPFColorPickerLib;
 using WPF_Shapes.DAL;
 
 namespace WPF_Shapes.Pages.DrawingBoard
@@ -12,6 +15,37 @@ namespace WPF_Shapes.Pages.DrawingBoard
         {
             InitializeComponent();
             DataContext = new DataContext();
+        }
+
+        private void ChangeFillColorButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dataContext = DataContext as DataContext;
+            ColorDialog colorDialog = new ColorDialog(dataContext.Settings.FillColorBrush.Color);
+            if ((bool) colorDialog.ShowDialog())
+            {
+                dataContext.Settings.FillColorBrush = new SolidColorBrush(colorDialog.SelectedColor);
+                FillColorRect.Fill = new SolidColorBrush(colorDialog.SelectedColor);
+            }
+
+        }
+
+        private void ChangeStrokeColorButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dataContext = DataContext as DataContext;
+            ColorDialog colorDialog = new ColorDialog(dataContext.Settings.StrokeColorBrush.Color);
+            if ((bool)colorDialog.ShowDialog())
+            {
+                dataContext.Settings.StrokeColorBrush = new SolidColorBrush(colorDialog.SelectedColor);
+                StrokeColorRect.Fill = new SolidColorBrush(colorDialog.SelectedColor);
+            }
+        }
+
+        private void ClearButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dataContext = DataContext as DataContext;
+            dataContext.Manager.Clear();
+            Canvas.Children.Clear();
+            ShapesListBox.Items.Refresh();
         }
     }
 }
