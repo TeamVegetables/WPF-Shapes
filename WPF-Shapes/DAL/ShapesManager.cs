@@ -12,7 +12,7 @@ namespace WPF_Shapes.DAL
             Shapes = new Dictionary<string, Shape>();
         }
 
-        public  void Add(Shape shape, string name)
+        public void Add(Shape shape, string name)
         {
             Shapes.Add(name, shape);
         }

@@ -7,10 +7,11 @@
              xmlns:dal="clr-namespace:WPF_Shapes.DAL"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Style="{StaticResource ContentRoot}" >
+    <Grid Style="{StaticResource ContentRoot}" Name="Board">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="109*"/>
+            <ColumnDefinition Width="92*"/>
+            <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
@@ -18,12 +19,21 @@
         <StackPanel Grid.Column="0" Grid.Row="0">
             <ListBox Name="ShapesListBox" ItemsSource="{Binding Manager.Shapes.Keys}"/>
         </StackPanel>
-        <ScrollViewer Grid.Column="1" Grid.Row="0">
+        <ScrollViewer Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1">
             <Canvas Name="Canvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
                 <Canvas.InputBindings>
-                    <MouseBinding MouseAction="LeftClick" Command="{Binding DrawPentagonCommand}" CommandParameter="{Binding ElementName=Canvas}"/>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding DrawPentagonCommand}" CommandParameter="{Binding ElementName=Board}"/>
                 </Canvas.InputBindings>
             </Canvas>
         </ScrollViewer>
+        <StackPanel Grid.Column="2">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Mode: "/>
+                <ComboBox MinWidth="50">
+                    <TextBlock>Draw</TextBlock>
+                    <TextBlock>Move</TextBlock>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>
