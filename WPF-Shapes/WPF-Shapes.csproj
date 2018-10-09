@@ -47,9 +47,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFColorPickerLib">
-      <HintPath>..\..\..\..\..\WPFColorPicker\WPFColorPickerLib\bin\Debug\WPFColorPickerLib.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -122,6 +119,12 @@
     <Resource Include="Resources\Team\marik.jpg" />
     <Resource Include="Resources\Team\nazar.jpg" />
     <Resource Include="Resources\Team\pilyak.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WPF-Shapes.ColorPicker\WPF-Shapes.ColorPicker.csproj">
+      <Project>{587acfba-1a74-4a38-98c4-69442eccb7dc}</Project>
+      <Name>WPF-Shapes.ColorPicker</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-Shapes", "WPF-Shapes.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-Shapes.Tests", "..\WPF-Shapes.Tests\WPF-Shapes.Tests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-Shapes.ColorPicker", "..\..\..\..\..\WPFColorPicker\WPFColorPickerLib\WPF-Shapes.ColorPicker.csproj", "{587ACFBA-1A74-4A38-98C4-69442ECCB7DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-Shapes.ColorPicker", "..\WPF-Shapes.ColorPicker\WPF-Shapes.ColorPicker.csproj", "{587ACFBA-1A74-4A38-98C4-69442ECCB7DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
