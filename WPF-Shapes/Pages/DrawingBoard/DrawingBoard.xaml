@@ -9,40 +9,44 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}" Name="Board">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="79*"/>
-            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
+        <GridSplitter Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Stretch" ShowsPreview="True" Width="1" Background="Gold" />
         <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center">
             <TextBlock Text="Shapes" Style="{StaticResource Heading2}" />
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center">
             <TextBlock Text="Board" Style="{StaticResource Heading2}" />
         </StackPanel>
+        <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Stretch" ShowsPreview="True" Width="1" Background="Gold"/>
         <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center">
             <TextBlock Text="Settings" Style="{StaticResource Heading2}" />
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1">
             <ListBox Name="ShapesListBox" ItemsSource="{Binding Manager.Shapes.Keys}" VerticalAlignment="Stretch"/>
-            <Button Content="Clear" Name="ClearButton" VerticalAlignment="Bottom" Click="ClearButton_OnClick"/>
+            <Button Content="Clear" Name="ClearButton" VerticalAlignment="Bottom" Click="ClearButton_OnClick" Margin="5,0,5,0"/>
         </StackPanel>
-        <ScrollViewer Grid.Column="1" Grid.Row="1">
-            <Canvas Name="Canvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
-                <Canvas.InputBindings>
-                    <MouseBinding MouseAction="LeftClick" Command="{Binding DrawPentagonCommand}" CommandParameter="{Binding ElementName=Board}"/>
-                </Canvas.InputBindings>
-            </Canvas>
+        <ScrollViewer Grid.Column="1" Grid.Row="1" Margin="2,0,4,0">
+            <Border BorderThickness="1" BorderBrush="Chartreuse ">
+                <Canvas Name="Canvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
+                    <Canvas.InputBindings>
+                        <MouseBinding MouseAction="LeftClick" Command="{Binding DrawPentagonCommand}" CommandParameter="{Binding ElementName=Board}"/>
+                    </Canvas.InputBindings>
+                </Canvas>
+            </Border>
         </ScrollViewer>
-        <StackPanel Grid.Column="2" Grid.Row="1">
+        <StackPanel Grid.Column="2" Grid.Row="1" Margin="4,0,0,0">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Mode: "/>
-                <ComboBox MinWidth="70" MinHeight="20">
-                    <TextBlock>Draw</TextBlock>
-                    <TextBlock>Move</TextBlock>
+                <ComboBox Name ="ModeComboBox" MinWidth="100" MinHeight="20" SelectedIndex="0" SelectionChanged="ModeComboBox_OnSelectionChanged">
+                    <ComboBoxItem Content="Drawing"></ComboBoxItem>
+                    <ComboBoxItem Content="Moving"></ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <Grid>
@@ -74,7 +78,7 @@
                     <Button Content="Change" Name="ChangeStrokeColorButton" Click="ChangeStrokeColorButton_OnClick"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.Column="1" Grid.Row="2">
-                    <Slider Value="{Binding Settings.StrokeThickness}" MinWidth="74"/>
+                    <Slider Value="{Binding Settings.StrokeThickness}" MinWidth="74" Maximum="20" Minimum="0"/>
                 </StackPanel>
             </Grid>
         </StackPanel>

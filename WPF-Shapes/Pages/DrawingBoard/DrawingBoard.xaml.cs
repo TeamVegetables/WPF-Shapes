@@ -1,7 +1,10 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using WPFColorPickerLib;
+using WPF_Shapes.BLL;
+using WPF_Shapes.BLL.Enum;
 using WPF_Shapes.DAL;
 
 namespace WPF_Shapes.Pages.DrawingBoard
@@ -15,6 +18,7 @@ namespace WPF_Shapes.Pages.DrawingBoard
         {
             InitializeComponent();
             DataContext = new DataContext();
+            DrawSettings.SelectedMode = (Mode)Enum.Parse(typeof(Mode), ((ComboBoxItem)ModeComboBox.SelectedItem).Content.ToString());
         }
 
         private void ChangeFillColorButton_OnClick(object sender, RoutedEventArgs e)
@@ -46,6 +50,11 @@ namespace WPF_Shapes.Pages.DrawingBoard
             dataContext.Manager.Clear();
             Canvas.Children.Clear();
             ShapesListBox.Items.Refresh();
+        }
+
+        private void ModeComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DrawSettings.SelectedMode = (Mode)Enum.Parse(typeof(Mode), ((ComboBoxItem)ModeComboBox.SelectedItem).Content.ToString());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Media;
+using WPF_Shapes.BLL.Enum;
 
 namespace WPF_Shapes.BLL
 {
@@ -9,6 +10,8 @@ namespace WPF_Shapes.BLL
         public SolidColorBrush StrokeColorBrush { get; set; }
 
         public int StrokeThickness { get; set; }
+
+        public static Mode SelectedMode { get; set; }
 
         public DrawSettings()
         {

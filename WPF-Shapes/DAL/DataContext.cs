@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using WPF_Shapes.BLL;
-using WPF_Shapes.Commands;
+using WPF_Shapes.BLL.Commands;
 
 namespace WPF_Shapes.DAL
 {

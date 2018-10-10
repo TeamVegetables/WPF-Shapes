@@ -3,10 +3,10 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using WPF_Shapes.BLL;
+using WPF_Shapes.BLL.Enum;
 using WPF_Shapes.DAL;
 
-namespace WPF_Shapes.Commands
+namespace WPF_Shapes.BLL.Commands
 {
     public class DrawPentagonCommand : ICommand
     {
@@ -28,18 +28,18 @@ namespace WPF_Shapes.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return DrawSettings.SelectedMode == Mode.Drawing;
         }
 
         public void Execute(object parameter)
         {
             var grid = parameter as Grid;
-            var canvas = (Canvas)((ScrollViewer)grid?.Children[4])?.Content;
+            var canvas = (Canvas)((Border)((ScrollViewer)grid?.Children[6])?.Content)?.Child;
             _pointCollection.Add(Mouse.GetPosition(canvas));
             ++_count;
             if (_count == 5)
             {
-                var listBox = (ListBox)((StackPanel)grid?.Children[3])?.Children[0];
+                var listBox = (ListBox)((StackPanel)grid?.Children[5])?.Children[0];
                 var name = $"Pentagon{++_shapeCount}";
                 var polygon = new Polygon
                 {
