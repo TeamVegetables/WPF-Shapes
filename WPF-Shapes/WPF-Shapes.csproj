@@ -67,7 +67,6 @@
     <Compile Include="BLL\DrawSettings.cs" />
     <Compile Include="BLL\Enum\Mode.cs" />
     <Compile Include="BLL\Commands\DrawPentagonCommand.cs" />
-    <Compile Include="BLL\Utils\Utils.cs" />
     <Compile Include="DAL\DataContext.cs" />
     <Compile Include="DAL\SerializationManager.cs" />
     <Compile Include="DAL\ShapesManager.cs" />
