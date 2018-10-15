@@ -14,12 +14,12 @@ namespace WPF_Shapes.BLL
         public SolidColorBrush FillColorBrush { get; set; }
 
         /// <summary>
-        /// Gets or sets stoke collor brush.
+        /// Gets or sets stoke color brush.
         /// </summary>
         public SolidColorBrush StrokeColorBrush { get; set; }
 
         /// <summary>
-        /// Gets or sets stoke thickeness.
+        /// Gets or sets stoke thickness.
         /// </summary>
         public int StrokeThickness { get; set; }
 
