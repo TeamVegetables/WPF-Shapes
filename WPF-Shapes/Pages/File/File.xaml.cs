@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Shapes;
 using Microsoft.Win32;
 using WPF_Shapes.DAL;
 
@@ -18,20 +19,26 @@ namespace WPF_Shapes.Pages.File
 
         private void OpenButton_OnClick(object sender, RoutedEventArgs e)
         {
+            Dictionary<string, Shape> shapes = null;
             var openFile = new OpenFileDialog();
-            if (openFile.ShowDialog().Value)
+            if (openFile.ShowDialog().HasValue)
             {
-                FileManager.Load(openFile.FileName, DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes);
+                shapes = SerializationManager.DeserializePentagons(openFile.FileName);
+            }
+            foreach (var shape in shapes)
+            {
+                DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes.Add(shape.Key, shape.Value);
             }
         }
 
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)
         {
             var saveFile = new SaveFileDialog();
-            if (saveFile.ShowDialog().Value)
+            if (saveFile.ShowDialog().HasValue)
             {
-                FileManager.Save(saveFile.FileName, DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes);
+                SerializationManager.SerializePentagons(saveFile.FileName, DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes);
             }
+
         }
     }
 }

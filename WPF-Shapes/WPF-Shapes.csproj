@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="BLL\Adapters\PolygonInfo.cs" />
     <Compile Include="BLL\DrawSettings.cs" />
     <Compile Include="BLL\Enum\Mode.cs" />
     <Compile Include="BLL\Commands\DrawPentagonCommand.cs" />
