@@ -24,6 +24,7 @@ namespace WPF_Shapes.BLL.Commands
         private Point? dragStart = null;
 
         private Canvas _canvas;
+
         /// <summary>
         /// Command which draw pentagon
         /// </summary>
@@ -33,6 +34,7 @@ namespace WPF_Shapes.BLL.Commands
             _pointCollection = new PointCollection();
             _dataContext = dataContext;
         }
+
         /// <summary>
         /// bool function to check drawing ability
         /// </summary>
@@ -40,6 +42,7 @@ namespace WPF_Shapes.BLL.Commands
         {
             return DrawSettings.SelectedMode == Mode.Drawing;
         }
+
         /// <summary>
         /// function which display Pentagon on canvas and add pentagon to data context
         /// </summary>
@@ -47,6 +50,7 @@ namespace WPF_Shapes.BLL.Commands
         {
             var grid = parameter as Grid;
             _canvas = (Canvas)((Border)((ScrollViewer)grid?.Children[6])?.Content)?.Child;
+            _shapeCount = _dataContext.Manager.Shapes.Count;
             _pointCollection.Add(Mouse.GetPosition(_canvas));
             ++_count;
             if (_count == 5)

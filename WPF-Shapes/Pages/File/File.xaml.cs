@@ -21,11 +21,7 @@ namespace WPF_Shapes.Pages.File
             var openFile = new OpenFileDialog();
             if (openFile.ShowDialog().Value)
             {
-                var shapes = FileManager.Load(openFile.FileName);
-                foreach (var shape in shapes)
-                {
-                    DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes.Add(shape.Key, shape.Value);
-                }
+                FileManager.Load(openFile.FileName, DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes);
             }
         }
 

@@ -16,29 +16,28 @@ namespace WPF_Shapes.DAL
         /// </summary>
         /// <param name="filePath">A file path.</param>
         /// <returns>Collection of shapes.</returns>
-        public static Dictionary<string, Shape> Load(string filePath)
+        public static void Load(string filePath, Dictionary<string, Shape> shapes)
         {
             if (filePath == null)
             {
                 throw new ArgumentNullException(nameof(filePath));
             }
 
-            var result = new Dictionary<string, Shape>();
+            int countShapes = shapes.Count;
             using (var reader = new StreamReader(filePath))
             {
                 while (!reader.EndOfStream)
                 {
                     var values = reader.ReadLine()?.Split(';');
                     var shape = new Polygon();
-                    var shapeName = values[0];
-                    for (int i = 1; i < values.Length - 1; i++)
+                    var shapeName = $"Pentagon{++countShapes}";
+                    for (int i = 0; i < values.Length - 1; i++)
                     {
                         shape.Points.Add(new Point(double.Parse(values[i]), double.Parse(values[i + 1])));
                     }
-                    result.Add(shapeName, shape);
+                    shapes.Add(shapeName, shape);
                 }
             }
-            return result;
         }
 
         /// <summary>
@@ -59,7 +58,7 @@ namespace WPF_Shapes.DAL
                 foreach (var shape in shapes)
                 {
                     var points = ((Polygon) shape.Value).Points;
-                    writer.WriteLine($"{shape.Key};{string.Join(";",points)}");
+                    writer.WriteLine($"{string.Join(";",points)}");
                 }
             }
             return true;
