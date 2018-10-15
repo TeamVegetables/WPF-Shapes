@@ -3,16 +3,34 @@ using WPF_Shapes.BLL.Enum;
 
 namespace WPF_Shapes.BLL
 {
+    /// <summary>
+    /// Represents UI settings.
+    /// </summary>
     public class DrawSettings
     {
+        /// <summary>
+        /// Gets or sets fill collor brush.
+        /// </summary>
         public SolidColorBrush FillColorBrush { get; set; }
 
+        /// <summary>
+        /// Gets or sets stoke collor brush.
+        /// </summary>
         public SolidColorBrush StrokeColorBrush { get; set; }
 
+        /// <summary>
+        /// Gets or sets stoke thickeness.
+        /// </summary>
         public int StrokeThickness { get; set; }
 
+        /// <summary>
+        /// Gets or sets selected mode.
+        /// </summary>
         public static Mode SelectedMode { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DrawSettings"/> class.
+        /// </summary>
         public DrawSettings()
         {
             FillColorBrush = Brushes.Chartreuse;
