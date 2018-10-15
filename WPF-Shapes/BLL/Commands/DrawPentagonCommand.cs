@@ -24,18 +24,25 @@ namespace WPF_Shapes.BLL.Commands
         private Point? dragStart = null;
 
         private Canvas _canvas;
-
+        /// <summary>
+        /// Command which draw pentagon
+        /// </summary>
+        /// <param name="dataContext">Class DataContext</param>
         public DrawPentagonCommand(DataContext dataContext)
         {
             _pointCollection = new PointCollection();
             _dataContext = dataContext;
         }
-
+        /// <summary>
+        /// bool function to check drawing ability
+        /// </summary>
         public bool CanExecute(object parameter)
         {
             return DrawSettings.SelectedMode == Mode.Drawing;
         }
-
+        /// <summary>
+        /// function which display Pentagon on canvas and add pentagon to data context
+        /// </summary>
         public void Execute(object parameter)
         {
             var grid = parameter as Grid;
