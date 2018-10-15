@@ -27,6 +27,7 @@ namespace WPF_Shapes.Pages.File
             }
             foreach (var shape in shapes)
             {
+                new Canvas().Children.Add(shape.Value);
                 DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes.Add(shape.Key, shape.Value);
             }
         }
