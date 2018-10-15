@@ -14,10 +14,13 @@ namespace WPF_Shapes.Pages.DrawingBoard
     /// </summary>
     public partial class DrawingBoard : UserControl
     {
+        public static DataContext CurrentContext { get; set; }
+
         public DrawingBoard()
         {
             InitializeComponent();
             DataContext = new DataContext();
+            DrawingBoard.CurrentContext = (DataContext)DataContext;
             DrawSettings.SelectedMode = (Mode)Enum.Parse(typeof(Mode), ((ComboBoxItem)ModeComboBox.SelectedItem).Content.ToString());
         }
 

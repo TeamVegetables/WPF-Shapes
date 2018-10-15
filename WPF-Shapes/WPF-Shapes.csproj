@@ -68,6 +68,7 @@
     <Compile Include="BLL\Enum\Mode.cs" />
     <Compile Include="BLL\Commands\DrawPentagonCommand.cs" />
     <Compile Include="DAL\DataContext.cs" />
+    <Compile Include="DAL\Extensions\PolygonExtension.cs" />
     <Compile Include="DAL\SerializationManager.cs" />
     <Compile Include="DAL\ShapesManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -141,6 +142,7 @@
     <Resource Include="Resources\Icon\icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DAL\Data\data.xml" />
     <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

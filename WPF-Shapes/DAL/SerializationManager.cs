@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
@@ -17,9 +18,10 @@ namespace WPF_Shapes.DAL
         /// <param name="pentagons">A dictionary of names of pentagons and pentagons to serialize.</param>
         public static void SerializePentagons(string fileName, Dictionary<string, Shape> pentagons)
         {
-            Stream stream = new FileStream(fileName, FileMode.Create);
-            new XmlSerializer(typeof(Dictionary<string, Shape>)).Serialize(stream, pentagons);
-            stream.Close();
+            using (Stream stream = new FileStream(fileName, FileMode.OpenOrCreate))
+            {
+                new XmlSerializer(typeof(Dictionary<string, Shape>), new Type[]{typeof(Polygon)}).Serialize(stream, pentagons);
+            }
         }
 
         /// <summary>
@@ -29,9 +31,11 @@ namespace WPF_Shapes.DAL
         /// <returns>>A dictionary of names of pentagons of deserialized pentagons.</returns>
         public static Dictionary<string, Shape> DeserializePentagons(string fileName)
         {
-            Stream stream = new FileStream(fileName, FileMode.Open);
-            var result = new XmlSerializer(typeof(Dictionary<string, Shape>)).Deserialize(stream) as Dictionary<string, Shape>;
-            stream.Close();
+            Dictionary<string, Shape> result=null;
+            using (Stream stream = new FileStream(fileName, FileMode.Open))
+            {
+               result = new XmlSerializer(typeof(Dictionary<string, Shape>)).Deserialize(stream) as Dictionary<string, Shape>;
+            }
             return result;
         }
     }
