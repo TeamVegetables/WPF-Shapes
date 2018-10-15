@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
 using WPF_Shapes.DAL;
-using WPF_Shapes.DAL.Extensions;
 
 namespace WPF_Shapes.Pages.File
 {
@@ -22,7 +21,7 @@ namespace WPF_Shapes.Pages.File
             var openFile = new OpenFileDialog();
             if (openFile.ShowDialog().Value)
             {
-                var shapes =  SerializationManager.DeserializePentagons(openFile.FileName);
+                var shapes = FileManager.Load(openFile.FileName);
                 foreach (var shape in shapes)
                 {
                     DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes.Add(shape.Key, shape.Value);
@@ -35,7 +34,7 @@ namespace WPF_Shapes.Pages.File
             var saveFile = new SaveFileDialog();
             if (saveFile.ShowDialog().Value)
             {
-                SerializationManager.SerializePentagons(saveFile.FileName, DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes);
+                FileManager.Save(saveFile.FileName, DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes);
             }
         }
     }
