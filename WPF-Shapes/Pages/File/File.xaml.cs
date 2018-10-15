@@ -23,16 +23,17 @@ namespace WPF_Shapes.Pages.File
         {
             Dictionary<string, Shape> shapes = null;
             var openFile = new OpenFileDialog();
-            if (openFile.ShowDialog().HasValue)
+            if (openFile.ShowDialog().Value)
             {
                 shapes = SerializationManager.DeserializePentagons(openFile.FileName);
+                foreach (var shape in shapes)
+                {
+                    DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes.Add(shape.Key, shape.Value);
+                    DrawingBoard.DrawingBoard.CurrentContext.Canvas.Children.Add(shape.Value);
+                }
             }
 
-            foreach (var shape in shapes)
-            {
-                DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes.Add(shape.Key, shape.Value);
-                DrawingBoard.DrawingBoard.CurrentContext.Canvas.Children.Add(shape.Value);
-            }
+            
         }
         /// <summary>
         /// Save file button activity
@@ -40,7 +41,7 @@ namespace WPF_Shapes.Pages.File
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)
         {
             var saveFile = new SaveFileDialog();
-            if (saveFile.ShowDialog().HasValue)
+            if (saveFile.ShowDialog().Value)
             {
                 SerializationManager.SerializePentagons(saveFile.FileName, DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes);
             }
