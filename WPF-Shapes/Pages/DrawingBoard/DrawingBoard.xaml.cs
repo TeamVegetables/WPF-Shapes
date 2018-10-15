@@ -15,7 +15,9 @@ namespace WPF_Shapes.Pages.DrawingBoard
     public partial class DrawingBoard : UserControl
     {
         public static DataContext CurrentContext { get; set; }
-
+        /// <summary>
+        /// Initializating drawing board
+        /// </summary>
         public DrawingBoard()
         {
             InitializeComponent();
@@ -23,7 +25,9 @@ namespace WPF_Shapes.Pages.DrawingBoard
             DataContext = CurrentContext;
             DrawSettings.SelectedMode = (Mode)Enum.Parse(typeof(Mode), ((ComboBoxItem)ModeComboBox.SelectedItem).Content.ToString());
         }
-
+        /// <summary>
+        /// Change color button
+        /// </summary>
         private void ChangeFillColorButton_OnClick(object sender, RoutedEventArgs e)
         {
             var dataContext = DataContext as DataContext;
@@ -34,7 +38,9 @@ namespace WPF_Shapes.Pages.DrawingBoard
                 FillColorRect.Fill = new SolidColorBrush(colorDialog.SelectedColor);
             }
         }
-
+        /// <summary>
+        /// Change stroke color
+        /// </summary>
         private void ChangeStrokeColorButton_OnClick(object sender, RoutedEventArgs e)
         {
             var dataContext = DataContext as DataContext;
@@ -45,7 +51,9 @@ namespace WPF_Shapes.Pages.DrawingBoard
                 StrokeColorRect.Fill = new SolidColorBrush(colorDialog.SelectedColor);
             }
         }
-
+        /// <summary>
+        /// Clear canvas and data context 
+        /// </summary>
         private void ClearButton_OnClick(object sender, RoutedEventArgs e)
         {
             var dataContext = DataContext as DataContext;
@@ -53,7 +61,9 @@ namespace WPF_Shapes.Pages.DrawingBoard
             Canvas.Children.Clear();
             ShapesListBox.Items.Refresh();
         }
-
+        /// <summary>
+        /// Mode drawing and mowing
+        /// </summary>
         private void ModeComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DrawSettings.SelectedMode = (Mode)Enum.Parse(typeof(Mode), ((ComboBoxItem)ModeComboBox.SelectedItem).Content.ToString());
