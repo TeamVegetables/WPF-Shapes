@@ -21,7 +21,7 @@ namespace WPF_Shapes.BLL.Commands
 
         private int _count;
 
-        private Point? dragStart = null;
+        private Point? _dragStart;
 
         private Canvas _canvas;
 
@@ -50,7 +50,7 @@ namespace WPF_Shapes.BLL.Commands
         {
             var grid = parameter as Grid;
             _canvas = (Canvas)((Border)((ScrollViewer)grid?.Children[6])?.Content)?.Child;
-            _shapeCount = _dataContext.Manager.Shapes.Count;
+            //_shapeCount = _dataContext.Manager.Shapes.Count;
             _pointCollection.Add(Mouse.GetPosition(_canvas));
             ++_count;
             if (_count == 5)
@@ -91,7 +91,7 @@ namespace WPF_Shapes.BLL.Commands
             if (DrawSettings.SelectedMode == Mode.Moving)
             {
                 var element = (UIElement)sender;
-                dragStart = args.GetPosition(element);
+                _dragStart = args.GetPosition(element);
                 element.CaptureMouse();
             }
         }
@@ -103,7 +103,7 @@ namespace WPF_Shapes.BLL.Commands
             if (DrawSettings.SelectedMode == Mode.Moving)
             {
                 var element = (UIElement)sender;
-                dragStart = null;
+                _dragStart = null;
                 element.ReleaseMouseCapture();
             }
         }
@@ -114,12 +114,12 @@ namespace WPF_Shapes.BLL.Commands
         {
             if (DrawSettings.SelectedMode == Mode.Moving)
             {
-                if (dragStart != null && args.LeftButton == MouseButtonState.Pressed)
+                if (_dragStart != null && args.LeftButton == MouseButtonState.Pressed)
                 {
                     var element = (UIElement)sender;
                     var p2 = args.GetPosition(_canvas);
-                    Canvas.SetLeft(element, p2.X - dragStart.Value.X);
-                    Canvas.SetTop(element, p2.Y - dragStart.Value.Y);
+                    Canvas.SetLeft(element, p2.X - _dragStart.Value.X);
+                    Canvas.SetTop(element, p2.Y - _dragStart.Value.Y);
                 }
             }
         }

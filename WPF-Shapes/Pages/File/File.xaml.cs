@@ -25,9 +25,11 @@ namespace WPF_Shapes.Pages.File
             {
                 shapes = SerializationManager.DeserializePentagons(openFile.FileName);
             }
+
             foreach (var shape in shapes)
             {
                 DrawingBoard.DrawingBoard.CurrentContext.Manager.Shapes.Add(shape.Key, shape.Value);
+                DrawingBoard.DrawingBoard.CurrentContext.Canvas.Children.Add(shape.Value);
             }
         }
 

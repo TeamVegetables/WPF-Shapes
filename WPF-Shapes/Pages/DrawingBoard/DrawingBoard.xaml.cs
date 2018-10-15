@@ -19,8 +19,8 @@ namespace WPF_Shapes.Pages.DrawingBoard
         public DrawingBoard()
         {
             InitializeComponent();
-            DataContext = new DataContext();
-            DrawingBoard.CurrentContext = (DataContext)DataContext;
+            CurrentContext = new DataContext(Canvas);
+            DataContext = CurrentContext;
             DrawSettings.SelectedMode = (Mode)Enum.Parse(typeof(Mode), ((ComboBoxItem)ModeComboBox.SelectedItem).Content.ToString());
         }
 
@@ -33,7 +33,6 @@ namespace WPF_Shapes.Pages.DrawingBoard
                 dataContext.Settings.FillColorBrush = new SolidColorBrush(colorDialog.SelectedColor);
                 FillColorRect.Fill = new SolidColorBrush(colorDialog.SelectedColor);
             }
-
         }
 
         private void ChangeStrokeColorButton_OnClick(object sender, RoutedEventArgs e)
