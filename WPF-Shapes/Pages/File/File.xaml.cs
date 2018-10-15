@@ -16,7 +16,9 @@ namespace WPF_Shapes.Pages.File
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Open file button activity
+        /// </summary>
         private void OpenButton_OnClick(object sender, RoutedEventArgs e)
         {
             Dictionary<string, Shape> shapes = null;
@@ -32,7 +34,9 @@ namespace WPF_Shapes.Pages.File
                 DrawingBoard.DrawingBoard.CurrentContext.Canvas.Children.Add(shape.Value);
             }
         }
-
+        /// <summary>
+        /// Save file button activity
+        /// </summary>
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)
         {
             var saveFile = new SaveFileDialog();
