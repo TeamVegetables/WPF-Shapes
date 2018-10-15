@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace WPF_Shapes.BLL.Adapters
@@ -20,6 +21,11 @@ namespace WPF_Shapes.BLL.Adapters
         
         public List<Tuple<double, double>> Points { get; private set; }
 
+        public Brush Stroke { get; set; }
+
+        public double  StrokeThickness { get; set; }
+
+        public Brush Fill { get; set; }
         /// <summary>
         /// Converts to polygon
         /// </summary>
@@ -32,6 +38,9 @@ namespace WPF_Shapes.BLL.Adapters
                 polygon.Points.Add(new Point(point.Item1, point.Item2));
             }
 
+            polygon.Stroke = Stroke;
+            polygon.StrokeThickness = StrokeThickness;
+            polygon.Fill = Fill;
             return polygon;
         }
         /// <summary>
@@ -43,6 +52,10 @@ namespace WPF_Shapes.BLL.Adapters
             {
                 Points.Add(new Tuple<double, double>(point.X, point.Y));
             }
+
+            Stroke = polygon.Stroke;
+            StrokeThickness = polygon.StrokeThickness;
+            Fill = polygon.Fill;
         }
     }
 }
