@@ -71,26 +71,35 @@ namespace WPF_Shapes.BLL.Commands
 
         private void OnMouseDown(object sender, MouseButtonEventArgs args)
         {
-            var element = (UIElement)sender;
-            dragStart = args.GetPosition(element);
-            element.CaptureMouse();
+            if (DrawSettings.SelectedMode == Mode.Moving)
+            {
+                var element = (UIElement)sender;
+                dragStart = args.GetPosition(element);
+                element.CaptureMouse();
+            }
         }
 
         private void OnMouseUp(object sender, MouseButtonEventArgs args)
         {
-            var element = (UIElement)sender;
-            dragStart = null;
-            element.ReleaseMouseCapture();
+            if (DrawSettings.SelectedMode == Mode.Moving)
+            {
+                var element = (UIElement)sender;
+                dragStart = null;
+                element.ReleaseMouseCapture();
+            }
         }
 
         private void OnMouseMove(object sender, MouseEventArgs args)
         {
-            if (dragStart != null && args.LeftButton == MouseButtonState.Pressed)
+            if (DrawSettings.SelectedMode == Mode.Moving)
             {
-                var element = (UIElement)sender;
-                var p2 = args.GetPosition(_canvas);
-                Canvas.SetLeft(element, p2.X - dragStart.Value.X);
-                Canvas.SetTop(element, p2.Y - dragStart.Value.Y);
+                if (dragStart != null && args.LeftButton == MouseButtonState.Pressed)
+                {
+                    var element = (UIElement)sender;
+                    var p2 = args.GetPosition(_canvas);
+                    Canvas.SetLeft(element, p2.X - dragStart.Value.X);
+                    Canvas.SetTop(element, p2.Y - dragStart.Value.Y);
+                }
             }
         }
     }
