@@ -9,14 +9,21 @@ namespace WPF_Shapes.BLL.Adapters
     [Serializable]
     public class PolygonInfo
     {
+        /// <summary>
+        /// Represents information about polygon
+        /// </summary>
         public PolygonInfo(Polygon polygon)
         {
             Points = new List<Tuple<double, double>>();
             Init(polygon);
         }
-
+        
         public List<Tuple<double, double>> Points { get; private set; }
 
+        /// <summary>
+        /// Converts to polygon
+        /// </summary>
+        /// <returns></returns>
         public Polygon ConvertToPolygon()
         {
             var polygon = new Polygon();
@@ -27,7 +34,9 @@ namespace WPF_Shapes.BLL.Adapters
 
             return polygon;
         }
-
+        /// <summary>
+        /// Initialize a new instance 
+        /// </summary>
         private void Init(Polygon polygon)
         {
             foreach (var point in polygon.Points)
