@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 namespace WPF_Shapes.DAL
 {
     /// <summary>
-    /// Static class for hexagon serialization.
+    /// Static class for pentagon serialization.
     /// </summary>
     public static class SerializationManager
     {
