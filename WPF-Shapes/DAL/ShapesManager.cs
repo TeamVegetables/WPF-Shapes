@@ -4,12 +4,12 @@ using System.Windows.Shapes;
 namespace WPF_Shapes.DAL
 {
     /// <summary>
-    /// Class container that has dictionary key - name of shape, value - shape.
+    ///  Represents Shapes manager.
     /// </summary>
     public class ShapesManager
     {
         /// <summary>
-        /// Dictionary key - name of shape, value - shape.
+        /// Gets dictionary key - name of shape, value - shape.
         /// </summary>
         public Dictionary<string, Shape> Shapes { get; }
 
@@ -32,7 +32,7 @@ namespace WPF_Shapes.DAL
         }
 
         /// <summary>
-        /// Clear dictionary
+        /// Clear dictionary.
         /// </summary>
         public void Clear()
         {

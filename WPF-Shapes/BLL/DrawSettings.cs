@@ -9,7 +9,7 @@ namespace WPF_Shapes.BLL
     public class DrawSettings
     {
         /// <summary>
-        /// Gets or sets fill collor brush.
+        /// Gets or sets fill color brush.
         /// </summary>
         public SolidColorBrush FillColorBrush { get; set; }
 
