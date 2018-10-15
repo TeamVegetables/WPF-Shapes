@@ -72,13 +72,19 @@ namespace WPF_Shapes.BLL.Commands
                 listBox?.Items.Refresh();
             }
         }
-
+        /// <summary>
+        /// function which is responsible for the movement of shapes
+        /// </summary>
+        /// <param name="element">pentagon</param>
         private void EnableDrag(UIElement element)
         {
             element.MouseDown += OnMouseDown;
             element.MouseMove += OnMouseMove;
             element.MouseUp += OnMouseUp;
         }
+        /// <summary>
+        /// function which reports holding mouse clicks
+        /// </summary>
 
         private void OnMouseDown(object sender, MouseButtonEventArgs args)
         {
@@ -89,7 +95,9 @@ namespace WPF_Shapes.BLL.Commands
                 element.CaptureMouse();
             }
         }
-
+        /// <summary>
+        /// function which reports stop holding mouse clicks
+        /// </summary>
         private void OnMouseUp(object sender, MouseButtonEventArgs args)
         {
             if (DrawSettings.SelectedMode == Mode.Moving)
@@ -99,7 +107,9 @@ namespace WPF_Shapes.BLL.Commands
                 element.ReleaseMouseCapture();
             }
         }
-
+        /// <summary>
+        /// function which reports moving mouse on the canvas
+        /// </summary>
         private void OnMouseMove(object sender, MouseEventArgs args)
         {
             if (DrawSettings.SelectedMode == Mode.Moving)
