@@ -17,6 +17,10 @@ namespace WPF_Shapes.BLL.Adapters
     [Serializable]
     public class PolygonInfo
     {
+        /// <summary>
+        /// Contains Information about polygon
+        /// </summary>
+        /// <param name="polygon"></param>
         public PolygonInfo(Polygon polygon)
         {
             Points = new List<Tuple<double, double>>();
@@ -33,7 +37,9 @@ namespace WPF_Shapes.BLL.Adapters
         public string Fill { get; set; }
 
         public List<Tuple<double, double>> Points { get; }
-
+        /// <summary>
+        /// Function which convert to polygon
+        /// </summary>
         public Polygon ConvertToPolygon()
         {
             var polygon = new Polygon
@@ -49,7 +55,9 @@ namespace WPF_Shapes.BLL.Adapters
             EnableDrag(polygon);
             return polygon;
         }
-
+        /// <summary>
+        /// Initialize new object
+        /// </summary>
         private void Init(Polygon polygon)
         {
             Fill = polygon.Fill.ToString();
